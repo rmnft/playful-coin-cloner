@@ -9,7 +9,72 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      tokens: {
+        Row: {
+          created_at: string | null
+          creator_name: string | null
+          creator_website: string | null
+          decimals: number | null
+          description: string | null
+          discord: string | null
+          id: string
+          logo_url: string | null
+          name: string
+          revoke_freeze: boolean | null
+          revoke_mint: boolean | null
+          revoke_update: boolean | null
+          symbol: string
+          telegram: string | null
+          total_supply: number | null
+          twitter: string | null
+          updated_at: string | null
+          user_id: string | null
+          website: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          creator_name?: string | null
+          creator_website?: string | null
+          decimals?: number | null
+          description?: string | null
+          discord?: string | null
+          id?: string
+          logo_url?: string | null
+          name: string
+          revoke_freeze?: boolean | null
+          revoke_mint?: boolean | null
+          revoke_update?: boolean | null
+          symbol: string
+          telegram?: string | null
+          total_supply?: number | null
+          twitter?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+          website?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          creator_name?: string | null
+          creator_website?: string | null
+          decimals?: number | null
+          description?: string | null
+          discord?: string | null
+          id?: string
+          logo_url?: string | null
+          name?: string
+          revoke_freeze?: boolean | null
+          revoke_mint?: boolean | null
+          revoke_update?: boolean | null
+          symbol?: string
+          telegram?: string | null
+          total_supply?: number | null
+          twitter?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
