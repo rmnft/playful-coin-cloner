@@ -1,19 +1,22 @@
 
 import React from 'react';
-import { Button } from "./ui/button";
+import { WalletConnect } from './WalletConnect';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
     <header className="w-full px-6 py-4 flex items-center justify-between">
       <div className="text-2xl font-bold gradient-text">
-        CoinFast
+        <Link to="/">CoinFast</Link>
       </div>
       <nav className="hidden md:flex items-center gap-6">
-        <a href="#" className="text-white/80 hover:text-white transition-colors">Create Token</a>
-        <a href="#" className="text-white/80 hover:text-white transition-colors">Create Liquidity</a>
-        <Button className="button-gradient text-white rounded-full px-6">
-          Select Wallet
-        </Button>
+        <Link to="/create-token" className="text-white/80 hover:text-white transition-colors">
+          Create Token
+        </Link>
+        <Link to="#" className="text-white/80 hover:text-white transition-colors">
+          Create Liquidity
+        </Link>
+        <WalletConnect />
       </nav>
     </header>
   );

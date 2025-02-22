@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button } from "./ui/button";
+import { WalletConnect } from './WalletConnect';
 
 export const Hero = () => {
   return (
@@ -11,9 +11,7 @@ export const Hero = () => {
       <p className="text-xl text-white/80 mb-10 max-w-2xl">
         Launch your own token on Solana in seconds. No coding required.
       </p>
-      <Button className="button-gradient text-white rounded-full px-8 py-6 text-lg">
-        Select Wallet
-      </Button>
+      <WalletConnect />
     </div>
   );
 };
