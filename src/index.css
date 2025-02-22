@@ -7,7 +7,7 @@
 
 @layer base {
   body {
-    @apply bg-background-dark text-white min-h-screen;
+    @apply bg-gradient-to-br from-background-dark via-primary/5 to-secondary/5 text-white min-h-screen;
   }
 }
 

@@ -16,7 +16,7 @@ export default {
         secondary: "#FEC6A1",
         background: {
           dark: "#0B1121",
-          card: "rgba(13, 17, 28, 0.8)"
+          card: "rgba(13, 17, 28, 0.95)"
         }
       },
       backgroundImage: {
