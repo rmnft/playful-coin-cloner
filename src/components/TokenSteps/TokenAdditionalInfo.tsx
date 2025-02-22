@@ -1,12 +1,10 @@
-
 import React from 'react';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 
 interface TokenAdditionalInfoProps {
-  data: {
+  formData: {
     website: string;
     twitter: string;
     telegram: string;
@@ -16,94 +14,53 @@ interface TokenAdditionalInfoProps {
     revokeFreeze: boolean;
     revokeMint: boolean;
     revokeUpdate: boolean;
+    [key: string]: any;
   };
-  onComplete: (data: {
-    website: string;
-    twitter: string;
-    telegram: string;
-    discord: string;
-    creatorName: string;
-    creatorWebsite: string;
-    revokeFreeze: boolean;
-    revokeMint: boolean;
-    revokeUpdate: boolean;
-  }) => void;
-  onBack: () => void;
+  setFormData: (data: any) => void;
 }
 
 export const TokenAdditionalInfo: React.FC<TokenAdditionalInfoProps> = ({
-  data,
-  onComplete,
-  onBack,
+  formData,
+  setFormData,
 }) => {
-  const [website, setWebsite] = React.useState(data.website);
-  const [twitter, setTwitter] = React.useState(data.twitter);
-  const [telegram, setTelegram] = React.useState(data.telegram);
-  const [discord, setDiscord] = React.useState(data.discord);
-  const [creatorName, setCreatorName] = React.useState(data.creatorName);
-  const [creatorWebsite, setCreatorWebsite] = React.useState(data.creatorWebsite);
-  const [revokeFreeze, setRevokeFreeze] = React.useState(data.revokeFreeze);
-  const [revokeMint, setRevokeMint] = React.useState(data.revokeMint);
-  const [revokeUpdate, setRevokeUpdate] = React.useState(data.revokeUpdate);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Implement the actual token creation logic
-    onComplete({
-      website,
-      twitter,
-      telegram,
-      discord,
-      creatorName,
-      creatorWebsite,
-      revokeFreeze,
-      revokeMint,
-      revokeUpdate,
-    });
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <div className="space-y-6">
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Social Links</h3>
         <div className="space-y-2">
           <Label htmlFor="website">Website</Label>
           <Input
             id="website"
-            type="url"
-            value={website}
-            onChange={(e) => setWebsite(e.target.value)}
             placeholder="https://"
+            value={formData.website}
+            onChange={(e) => setFormData({ ...formData, website: e.target.value })}
           />
         </div>
-
         <div className="space-y-2">
           <Label htmlFor="twitter">Twitter</Label>
           <Input
             id="twitter"
-            value={twitter}
-            onChange={(e) => setTwitter(e.target.value)}
             placeholder="@username"
+            value={formData.twitter}
+            onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
           />
         </div>
-
         <div className="space-y-2">
           <Label htmlFor="telegram">Telegram</Label>
           <Input
             id="telegram"
-            value={telegram}
-            onChange={(e) => setTelegram(e.target.value)}
             placeholder="t.me/username"
+            value={formData.telegram}
+            onChange={(e) => setFormData({ ...formData, telegram: e.target.value })}
           />
         </div>
-
         <div className="space-y-2">
           <Label htmlFor="discord">Discord</Label>
           <Input
             id="discord"
-            value={discord}
-            onChange={(e) => setDiscord(e.target.value)}
             placeholder="discord.gg/invite"
+            value={formData.discord}
+            onChange={(e) => setFormData({ ...formData, discord: e.target.value })}
           />
         </div>
       </div>
@@ -114,60 +71,49 @@ export const TokenAdditionalInfo: React.FC<TokenAdditionalInfoProps> = ({
           <Label htmlFor="creatorName">Creator Name</Label>
           <Input
             id="creatorName"
-            value={creatorName}
-            onChange={(e) => setCreatorName(e.target.value)}
+            value={formData.creatorName}
+            onChange={(e) => setFormData({ ...formData, creatorName: e.target.value })}
           />
         </div>
-
         <div className="space-y-2">
           <Label htmlFor="creatorWebsite">Creator Website</Label>
           <Input
             id="creatorWebsite"
-            type="url"
-            value={creatorWebsite}
-            onChange={(e) => setCreatorWebsite(e.target.value)}
+            value={formData.creatorWebsite}
+            onChange={(e) => setFormData({ ...formData, creatorWebsite: e.target.value })}
           />
         </div>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Authority Settings</h3>
-        <div className="space-y-2">
+        <h3 className="text-lg font-semibold">Token Permissions</h3>
+        <div className="space-y-4">
           <div className="flex items-center space-x-2">
             <Checkbox
               id="revokeFreeze"
-              checked={revokeFreeze}
-              onCheckedChange={(checked) => setRevokeFreeze(checked as boolean)}
+              checked={formData.revokeFreeze}
+              onCheckedChange={(checked) => setFormData({ ...formData, revokeFreeze: checked })}
             />
-            <Label htmlFor="revokeFreeze">Revoke Freeze Authority</Label>
+            <Label htmlFor="revokeFreeze">Revoke freeze authority</Label>
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox
               id="revokeMint"
-              checked={revokeMint}
-              onCheckedChange={(checked) => setRevokeMint(checked as boolean)}
+              checked={formData.revokeMint}
+              onCheckedChange={(checked) => setFormData({ ...formData, revokeMint: checked })}
             />
-            <Label htmlFor="revokeMint">Revoke Mint Authority</Label>
+            <Label htmlFor="revokeMint">Revoke mint authority</Label>
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox
               id="revokeUpdate"
-              checked={revokeUpdate}
-              onCheckedChange={(checked) => setRevokeUpdate(checked as boolean)}
+              checked={formData.revokeUpdate}
+              onCheckedChange={(checked) => setFormData({ ...formData, revokeUpdate: checked })}
             />
-            <Label htmlFor="revokeUpdate">Revoke Update Authority</Label>
+            <Label htmlFor="revokeUpdate">Revoke update authority</Label>
           </div>
         </div>
       </div>
-
-      <div className="flex gap-4">
-        <Button type="button" variant="outline" onClick={onBack}>
-          Back
-        </Button>
-        <Button type="submit" className="flex-1">
-          Create Token
-        </Button>
-      </div>
-    </form>
+    </div>
   );
 };

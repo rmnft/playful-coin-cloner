@@ -1,16 +1,16 @@
-
 import React from 'react';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
 interface TokenSupplyInfoProps {
-  data: {
+  formData: {
     decimals: number;
     totalSupply: number;
     description: string;
+    [key: string]: any;
   };
+  setFormData: (data: any) => void;
   onComplete: (data: {
     decimals: number;
     totalSupply: number;
@@ -20,34 +20,31 @@ interface TokenSupplyInfoProps {
 }
 
 export const TokenSupplyInfo: React.FC<TokenSupplyInfoProps> = ({
-  data,
+  formData,
+  setFormData,
   onComplete,
   onBack,
 }) => {
-  const [decimals, setDecimals] = React.useState(data.decimals);
-  const [totalSupply, setTotalSupply] = React.useState(data.totalSupply);
-  const [description, setDescription] = React.useState(data.description);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onComplete({ decimals, totalSupply, description });
+    onComplete({ decimals: formData.decimals, totalSupply: formData.totalSupply, description: formData.description });
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="decimals">Decimals</Label>
+        <Label htmlFor="decimals">Token Decimals</Label>
         <Input
           id="decimals"
           type="number"
-          value={decimals}
-          onChange={(e) => setDecimals(Number(e.target.value))}
-          required
           min={0}
           max={18}
-          disabled
+          value={formData.decimals}
+          onChange={(e) => setFormData({ ...formData, decimals: parseInt(e.target.value) })}
         />
-        <p className="text-sm text-gray-500">Fixed at 9 decimals</p>
+        <p className="text-sm text-gray-500">
+          Number of decimal places (0-18). Common values: 9 for most tokens, 6 for stablecoins
+        </p>
       </div>
 
       <div className="space-y-2">
@@ -55,22 +52,22 @@ export const TokenSupplyInfo: React.FC<TokenSupplyInfoProps> = ({
         <Input
           id="totalSupply"
           type="number"
-          value={totalSupply}
-          onChange={(e) => setTotalSupply(Number(e.target.value))}
-          required
           min={1}
-          disabled
+          value={formData.totalSupply}
+          onChange={(e) => setFormData({ ...formData, totalSupply: parseInt(e.target.value) })}
         />
-        <p className="text-sm text-gray-500">Fixed at 1 billion tokens</p>
+        <p className="text-sm text-gray-500">
+          The total number of tokens to create
+        </p>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="description">Description</Label>
+        <Label htmlFor="description">Token Description</Label>
         <Textarea
           id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Enter your token's description"
+          placeholder="Describe your token's purpose and features..."
+          value={formData.description}
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           className="h-32"
         />
       </div>
