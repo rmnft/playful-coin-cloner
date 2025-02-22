@@ -10,11 +10,11 @@ export const WalletConnect: FC = () => {
 
   if (connecting) {
     return (
-      <Button disabled className="button-gradient text-white rounded-full px-6">
+      <Button disabled className="bg-primary text-white rounded-full px-6 opacity-80">
         Connecting...
       </Button>
     );
   }
 
-  return <WalletMultiButton className="wallet-adapter-button-trigger button-gradient text-white rounded-full px-6" />;
+  return <WalletMultiButton className="wallet-adapter-button-trigger bg-gradient-primary text-white rounded-full px-6" />;
 };

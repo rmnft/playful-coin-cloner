@@ -10,10 +10,10 @@ export const Header = () => {
         <Link to="/">CoinFast</Link>
       </div>
       <nav className="hidden md:flex items-center gap-6">
-        <Link to="/create-token" className="text-white/80 hover:text-white transition-colors">
+        <Link to="/create-token" className="text-white/80 hover:text-primary transition-colors">
           Create Token
         </Link>
-        <Link to="#" className="text-white/80 hover:text-white transition-colors">
+        <Link to="#" className="text-white/80 hover:text-primary transition-colors">
           Create Liquidity
         </Link>
         <WalletConnect />

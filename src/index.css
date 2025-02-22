@@ -22,4 +22,3 @@
 .button-gradient {
   @apply bg-gradient-primary hover:opacity-90 transition-opacity;
 }
-

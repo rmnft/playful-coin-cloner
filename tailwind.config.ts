@@ -12,16 +12,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#00E5FF",
-        secondary: "#7C3AED",
+        primary: "#ea384c",
+        secondary: "#FEC6A1",
         background: {
           dark: "#0B1121",
           card: "rgba(13, 17, 28, 0.8)"
         }
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(to right, #00E5FF, #7C3AED)',
-        'gradient-banner': 'linear-gradient(90deg, #2193b0, #6dd5ed)',
+        'gradient-primary': 'linear-gradient(111.4deg, rgba(238,113,113,1) 1%, rgba(246,215,148,1) 58%)',
+        'gradient-banner': 'linear-gradient(to right, #ea384c, #FEC6A1)',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
