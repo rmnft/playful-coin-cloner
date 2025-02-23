@@ -1,3 +1,4 @@
+
 import { FC } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
@@ -9,10 +10,11 @@ import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 export const WalletConnect: FC = () => {
-  const { wallet, connecting } = useWallet();
-  const { connecting: connectingModal } = useWalletModal();
+  const { wallet } = useWallet();
+  const { visible } = useWalletModal();
 
-  if (connecting || connectingModal) {
+  // Use visible state from wallet modal to determine if connecting
+  if (visible) {
     return (
       <div className="flex justify-center">
         <Button disabled className="

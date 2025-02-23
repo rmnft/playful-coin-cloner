@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -29,12 +30,10 @@ export const TokenPreview3D: React.FC = () => {
 
     // Create coin geometry
     const geometry = new THREE.CylinderGeometry(2, 2, 0.2, 32);
-    const material = new THREE.MeshPhongMaterial({
+    const material = new THREE.MeshStandardMaterial({
       color: 0xff3333,
-      specular: 0xffffff,
-      shininess: 100,
-      metalness: 1,
       roughness: 0.2,
+      metalness: 0.8
     });
 
     const coin = new THREE.Mesh(geometry, material);
