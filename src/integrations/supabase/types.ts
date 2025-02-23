@@ -9,69 +9,113 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      liquidity_pools: {
+        Row: {
+          created_at: string | null
+          id: string
+          pool_id: string
+          pooled_sol: number
+          pooled_token: number
+          token_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          pool_id: string
+          pooled_sol: number
+          pooled_token: number
+          token_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          pool_id?: string
+          pooled_sol?: number
+          pooled_token?: number
+          token_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "liquidity_pools_token_id_fkey"
+            columns: ["token_id"]
+            isOneToOne: false
+            referencedRelation: "tokens"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       tokens: {
         Row: {
           created_at: string | null
-          creator_name: string | null
-          creator_website: string | null
+          creator: string
           decimals: number | null
           description: string | null
-          discord: string | null
+          freeze_authority: boolean | null
           id: string
-          logo_url: string | null
+          image: string | null
+          mint_authority: boolean | null
           name: string
-          revoke_freeze: boolean | null
-          revoke_mint: boolean | null
-          revoke_update: boolean | null
+          social_links: string[] | null
+          supply: number
           symbol: string
-          telegram: string | null
-          total_supply: number | null
-          twitter: string | null
-          updated_at: string | null
-          user_id: string | null
+          update_authority: boolean | null
           website: string | null
         }
         Insert: {
           created_at?: string | null
-          creator_name?: string | null
-          creator_website?: string | null
+          creator: string
           decimals?: number | null
           description?: string | null
-          discord?: string | null
+          freeze_authority?: boolean | null
           id?: string
-          logo_url?: string | null
+          image?: string | null
+          mint_authority?: boolean | null
           name: string
-          revoke_freeze?: boolean | null
-          revoke_mint?: boolean | null
-          revoke_update?: boolean | null
+          social_links?: string[] | null
+          supply?: number
           symbol: string
-          telegram?: string | null
-          total_supply?: number | null
-          twitter?: string | null
-          updated_at?: string | null
-          user_id?: string | null
+          update_authority?: boolean | null
           website?: string | null
         }
         Update: {
           created_at?: string | null
-          creator_name?: string | null
-          creator_website?: string | null
+          creator?: string
           decimals?: number | null
           description?: string | null
-          discord?: string | null
+          freeze_authority?: boolean | null
           id?: string
-          logo_url?: string | null
+          image?: string | null
+          mint_authority?: boolean | null
           name?: string
-          revoke_freeze?: boolean | null
-          revoke_mint?: boolean | null
-          revoke_update?: boolean | null
+          social_links?: string[] | null
+          supply?: number
           symbol?: string
-          telegram?: string | null
-          total_supply?: number | null
-          twitter?: string | null
-          updated_at?: string | null
-          user_id?: string | null
+          update_authority?: boolean | null
           website?: string | null
+        }
+        Relationships: []
+      }
+      users: {
+        Row: {
+          created_at: string | null
+          id: string
+          jwt_token: string | null
+          transactions: string[] | null
+          wallet_address: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          jwt_token?: string | null
+          transactions?: string[] | null
+          wallet_address: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          jwt_token?: string | null
+          transactions?: string[] | null
+          wallet_address?: string
         }
         Relationships: []
       }
